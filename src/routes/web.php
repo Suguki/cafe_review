@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TopController@index');
+
+Route::get('/cafe', 'CafeController@index')->name('cafe.index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/cafe/create', 'CafeController@create')->name('cafe.create');
+
+Route::post('/cafe/store', 'CafeController@store')->name('cafe.store');

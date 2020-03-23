@@ -2,7 +2,6 @@
 
 @section('content')
 
-<a href="{{route('cafe.index')}}">リンク</a>
-
+<p>aaa</p>
 
 @endsection
