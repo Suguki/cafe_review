@@ -24,3 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cafe/create', 'CafeController@create')->name('cafe.create');
 
 Route::post('/cafe/store', 'CafeController@store')->name('cafe.store');
+
+Route::get('/cafe/edit/{id}', 'CafeController@edit')->name('cafe.edit');
+
+Route::post('/cafe/update/{id}', 'CafeController@update')->name('cafe.update');
+
+Route::post('/cafe/delete/{id}', 'CafeController@delete')->name('cafe.delete');
