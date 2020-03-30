@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-<p>aaa</p>
+<div class="container">
+    <p>aaa</p>
+</div>
 
 @endsection

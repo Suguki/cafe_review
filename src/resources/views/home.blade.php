@@ -4,5 +4,4 @@
 
 <a href="{{route('cafe.index')}}">リンク</a>
 
-
 @endsection
