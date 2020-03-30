@@ -7,6 +7,11 @@ use App\Models\Cafe;
 
 class CafeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $cafes = Cafe::all();
