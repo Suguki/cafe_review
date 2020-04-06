@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', 'TopController@index');
 
 Route::get('/cafe', 'CafeController@index')->name('cafe.index');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cafe/create', 'CafeController@create')->name('cafe.create');
+
+Route::get('/cafe/{id}', 'CafeController@show')->name('cafe.show');
 
 Route::post('/cafe/store', 'CafeController@store')->name('cafe.store');
 
