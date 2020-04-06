@@ -15,9 +15,9 @@ class AddColumnToCafesTable extends Migration
     {
         Schema::table('cafes', function (Blueprint $table) {
             $table->string('place', 256)->after('name');
-            $table->string('evaluationItem_1',256)->after('place');
-            $table->string('evaluationItem_2',256)->after('evaluationItem_1');
-            $table->string('evaluationItem_3',256)->after('evaluationItem_2');
+            $table->string('food_evaluation', 256)->after('place');
+            $table->string('access_evaluation', 256)->after('food_evaluation');
+            $table->string('feeling_evaluation', 256)->after('access_evaluation');
         });
     }
 
@@ -30,9 +30,9 @@ class AddColumnToCafesTable extends Migration
     {
         Schema::table('cafes', function (Blueprint $table) {
             $table->dropColumn('place');
-            $table->dropColumn('evaluationItem_1');
-            $table->dropColumn('evaluationItem_2');
-            $table->dropColumn('evaluationItem_3');
+            $table->dropColumn('food_evaluation');
+            $table->dropColumn('access_evaluation');
+            $table->dropColumn('feeling_evaluation');
         });
     }
 }
