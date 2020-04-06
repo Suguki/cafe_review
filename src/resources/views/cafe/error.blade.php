@@ -3,6 +3,6 @@
 
 @section('content')
 
-<h2>{{$errorMessage}}</h2>
+<h2>{{ $errorMessage }}</h2>
 
 @endsection
