@@ -14,7 +14,7 @@ class AddReviewToCefesTable extends Migration
     public function up()
     {
         Schema::table('cafes', function (Blueprint $table) {
-            $table->string('review', 256);
+            $table->string('review', 256)->after('evaluationItem_3');
         });
     }
 
@@ -26,7 +26,7 @@ class AddReviewToCefesTable extends Migration
     public function down()
     {
         Schema::table('cafes', function (Blueprint $table) {
-            //
+            $table->dropColumn('review');
         });
     }
 }
