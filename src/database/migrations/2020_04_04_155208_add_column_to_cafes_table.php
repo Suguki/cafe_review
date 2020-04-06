@@ -15,9 +15,9 @@ class AddColumnToCafesTable extends Migration
     {
         Schema::table('cafes', function (Blueprint $table) {
             $table->string('place', 256)->after('name');
-            $table->string('food_evaluation', 256)->after('place');
-            $table->string('access_evaluation', 256)->after('food_evaluation');
-            $table->string('feeling_evaluation', 256)->after('access_evaluation');
+            $table->integer('food_evaluation')->default(0)->after('place');
+            $table->integer('access_evaluation')->default(0)->after('food_evaluation');
+            $table->integer('feeling_evaluation')->default(0)->after('access_evaluation');
         });
     }
 
