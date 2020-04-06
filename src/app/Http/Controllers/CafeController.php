@@ -20,6 +20,23 @@ class CafeController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $cafe = Cafe::find($id);
+
+        if ($cafe === null) {
+            // 渡された$idでカフェを取得できなかったときは、カフェが存在しないことをページに表示して、ユーザーにお知らせする。
+            return view('cafe/error', [
+                'errorMessage' => 'このカフェは存在しません。'
+            ]);
+        }
+
+        // 渡された$idでカフェを取得することができた場合、詳細ページを表示する。これは表示系なので、bladeへ変数を渡す。
+        return view('cafe/show', [
+            'cafe' => $cafe,
+        ]);
+    }
+
     public function create()
     {
         return view('cafe/create');
