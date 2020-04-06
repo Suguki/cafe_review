@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <h4>立地の評価</h4>
+                <h4>アクセスの評価</h4>
                 <p>{{$cafe->access_evaluation}}</p>
             </div>
         </div>
