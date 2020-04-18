@@ -42,10 +42,27 @@ class CafeController extends Controller
         return view('cafe/create');
     }
 
+    public function sort(Request $request)
+    {
+        $evaluation = $request->get('evaluation');
+        if($request->get('sortBy') == 'asc'){
+            $cafeAll = Cafe::all();
+            $cafes = $cafeAll->sortBy($evaluation);
+            return view('cafe/index', ['cafes' => $cafes]);
+        } elseif($request->get('sortBy') == 'desc') {
+            $cafeAll = Cafe::all();
+            $cafes = $cafeAll->sortByDesc($evaluation);
+            return view('cafe/index', ['cafes' => $cafes]);
+        } else {
+            return redirect(route('cafe.index'));
+        }
+    }
+
     public function store(Request $request)
     {
         $cafe = new Cafe();
         $cafe->name = $request->get('name');
+        $cafe->place = $request->get('place');
         $cafe->save();
         return redirect(route('cafe.index'));
     }
