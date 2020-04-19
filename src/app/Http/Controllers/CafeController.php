@@ -69,9 +69,6 @@ class CafeController extends Controller
         $cafe = Cafe::find($id);
         $cafe->name = $request->get('name');
         $cafe->place = $request->get('place');
-        $cafe->food_evaluation = $request->get('food_evaluation');
-        $cafe->access_evaluation = $request->get('access_evaluation');
-        $cafe->feeling_evaluation = $request->get('feeling_evaluation');
         $cafe->save();
         return redirect(route('cafe.index'));
     }
