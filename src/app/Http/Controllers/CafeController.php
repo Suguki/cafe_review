@@ -51,6 +51,7 @@ class CafeController extends Controller
     {
         $cafe = new Cafe();
         $cafe->name = $request->get('name');
+        $cafe->place = $request->get('place');
         $cafe->save();
         return redirect(route('cafe.index'));
     }
