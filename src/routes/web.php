@@ -27,8 +27,6 @@ Route::get('/cafe/{id}', 'CafeController@show')->name('cafe.show');
 
 Route::post('/cafe/store', 'CafeController@store')->name('cafe.store');
 
-Route::post('/cafe/sort', 'CafeController@sort')->name('cafe.sort');
-
 Route::get('/cafe/edit/{id}', 'CafeController@edit')->name('cafe.edit');
 
 Route::post('/cafe/update/{id}', 'CafeController@update')->name('cafe.update');
