@@ -32,3 +32,7 @@ Route::get('/cafe/edit/{id}', 'CafeController@edit')->name('cafe.edit');
 Route::post('/cafe/update/{id}', 'CafeController@update')->name('cafe.update');
 
 Route::post('/cafe/delete/{id}', 'CafeController@delete')->name('cafe.delete');
+
+Route::get('/cafe/{cafe_id}/review/create', 'ReviewController@create')->name('review.create');
+
+Route::post('/cafe/{cafe_id}/review/store', 'ReviewController@store')->name('review.store');
