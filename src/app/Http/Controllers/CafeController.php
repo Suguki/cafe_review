@@ -12,12 +12,17 @@ class CafeController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $evaluation = $request->get('evaluation');
         $cafes = Cafe::all();
-        return view('cafe/index', [
-            'cafes' => $cafes,
-        ]);
+        if($request->get('sortBy') == 'asc'){
+            $cafes = $cafes->sortBy($evaluation);
+        } elseif($request->get('sortBy') == 'desc') {
+            $cafes = $cafes->sortByDesc($evaluation);
+        }
+        return view('cafe/index', ['cafes' => $cafes]);
+
     }
 
     public function show($id)
@@ -42,27 +47,10 @@ class CafeController extends Controller
         return view('cafe/create');
     }
 
-    public function sort(Request $request)
-    {
-        $evaluation = $request->get('evaluation');
-        if($request->get('sortBy') == 'asc'){
-            $cafeAll = Cafe::all();
-            $cafes = $cafeAll->sortBy($evaluation);
-            return view('cafe/index', ['cafes' => $cafes]);
-        } elseif($request->get('sortBy') == 'desc') {
-            $cafeAll = Cafe::all();
-            $cafes = $cafeAll->sortByDesc($evaluation);
-            return view('cafe/index', ['cafes' => $cafes]);
-        } else {
-            return redirect(route('cafe.index'));
-        }
-    }
-
     public function store(Request $request)
     {
         $cafe = new Cafe();
         $cafe->name = $request->get('name');
-        $cafe->place = $request->get('place');
         $cafe->save();
         return redirect(route('cafe.index'));
     }

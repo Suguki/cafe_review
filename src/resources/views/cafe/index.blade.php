@@ -4,16 +4,15 @@
 
 <a href="{{ route('cafe.create' )}}" class="btn btn-primary">カフェを登録</a>
 
-<form action="{{ route('cafe.sort') }}" method="post">
-    @csrf
+<form action="{{ route('cafe.index') }}" method="get">
     <select name="evaluation">
         <option value="food_evaluation">料理</option>
         <option value="access_evaluation">アクセス</option>
         <option value="feeling_evaluation"> 雰囲気</option>
     </select>
     <select name="sortBy">
-        <option value="asc">昇順</option>
-        <option value="desc">降順</option>
+        <option value="asc">低い順</option>
+        <option value="desc">高い順</option>
     </select>
     <input type="submit" value="並べ替え" class="btn btn-warning">
 </form>
