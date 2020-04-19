@@ -2,6 +2,8 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="{{ route('review.create', ['cafe_id' => $cafe->id]) }}">レビュー投稿</a>
+
 <div class="card">
     <div class="card-header">
         {{ $cafe->name }}

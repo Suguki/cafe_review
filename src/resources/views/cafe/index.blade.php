@@ -20,8 +20,11 @@
 @forelse($cafes as $index => $cafe)
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}">
-            {{ $cafe->name }}を編集する
+        <a href="{{ route('cafe.show', ['id' => $cafe->id]) }}">
+            {{ $cafe->name }}
+        </a>
+        <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}" class="float-right">
+            編集
         </a>
     </div>
     <div class="card-body">
