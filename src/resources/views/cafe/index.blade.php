@@ -30,18 +30,20 @@
     <div class="card-body">
         <p>{{ $cafe->name }}</p>
         <p>{{ $cafe->place }}</p>
-        <p>料理</p>
-        @for($i = 1; $i <= $cafe->food_evaluation; $i++)
-          ★
-        @endfor
-        <p>アクセス</p>
-        @for($i = 1; $i <= $cafe->access_evaluation; $i++)
-          ★
-        @endfor
-        <p>雰囲気</p>
-        @for($i = 1; $i <= $cafe->feeling_evaluation; $i++)
-          ★
-        @endfor
+        @foreach($review as $review)
+            <p>料理</p>
+            @for($i = 1; $i <= $review->food_evaluation; $i++)
+              ★
+            @endfor
+            <p>アクセス</p>
+            @for($i = 1; $i <= $review->access_evaluation; $i++)
+              ★
+            @endfor
+            <p>雰囲気</p>
+            @for($i = 1; $i <= $review->feeling_evaluation; $i++)
+              ★
+            @endfor
+        @endforeach
         <p>{{ $cafe->created_at }}</p>
         <p>{{ $cafe->updated_at }}</p>
     </div>

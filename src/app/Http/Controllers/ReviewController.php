@@ -15,15 +15,23 @@ class ReviewController extends Controller
 
     public function store($cafe_id, Request $request)
     {
-        $review = new Review();
-        $review->cafe_id = $cafe_id;
-        $review->user_id = Auth::id();
-        $review->title = $request->get('title');
-        $review->review = $request->get('review');
-        $review->food_evaluation = $request->get('food_evaluation');
-        $review->access_evaluation = $request->get('access_evaluation');
-        $review->feeling_evaluation = $request->get('feeling_evaluation');
-        $review->save();
-        return redirect(route('cafe.show', ['id' => $cafe_id]));
+        if(null !==($request->get('title')))
+        {
+            $review = new Review();
+            $review->cafe_id = $cafe_id;
+            $review->user_id = Auth::id();
+            $review->title = $request->get('title');
+            $review->review = $request->get('review');
+            $review->food_evaluation = $request->get('food_evaluation');
+            $review->access_evaluation = $request->get('access_evaluation');
+            $review->feeling_evaluation = $request->get('feeling_evaluation');
+            $review->save();
+            return redirect(route('cafe.show', ['id' => $cafe_id]));
+        }else{
+            return view('review/error', [
+                'errorMessage' => '未記入の項目があります。'
+            ]);
+        }
+
     }
 }
