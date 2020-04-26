@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cafe;
+use App\Models\CafeImages;
 
 class CafeController extends Controller
 {
@@ -16,13 +17,12 @@ class CafeController extends Controller
     {
         $evaluation = $request->get('evaluation');
         $cafes = Cafe::all();
-        if($request->get('sortBy') == 'asc'){
+        if ($request->get('sortBy') == 'asc') {
             $cafes = $cafes->sortBy($evaluation);
-        } elseif($request->get('sortBy') == 'desc') {
+        } elseif ($request->get('sortBy') == 'desc') {
             $cafes = $cafes->sortByDesc($evaluation);
         }
         return view('cafe/index', ['cafes' => $cafes]);
-
     }
 
     public function show($id)
@@ -78,5 +78,22 @@ class CafeController extends Controller
         $cafe = Cafe::find($id);
         $cafe->delete();
         return redirect(route('cafe.index'));
+    }
+
+    public function upload($id, Request $request) //1
+    {
+        if ($request->file('imageFile')->isValid()) {
+            $path = $request->file('imageFile')->store('public/images'); //2,3,4
+            $cafe_images = new CafeImages();
+            $cafe_images->cafe_id = $id;
+            $cafe_images->file_name = $path; //5
+            $cafe_images->save();
+            return redirect(route('cafe.edit', ['id' => $id]))->with('success', '保存しました。');
+        } else {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors(['file' => '画像がアップロードされていないか不正なデータです。']);
+        }
     }
 }
