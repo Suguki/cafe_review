@@ -33,6 +33,16 @@
                 <p>{{ $cafe->feeling_evaluation }}</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <h4>レビュー一覧</h4>
+                @foreach($reviews as $index => $review)
+                <p>{{ $review->title }}</p>
+                <p>{{ $review->review }}</p>
+                <p>{{ $review->created_at }}</p>
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>
 @endsection
