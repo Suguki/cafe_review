@@ -15,16 +15,13 @@ class ReviewController extends Controller
 
     public function store($cafe_id, Request $request)
     {
-        $request->validate(
-            [
+        $request->validate([
             'title' => 'required|unique:reviews|max:255',
             'review' => 'required|unique:reviews',
-        ],
-            [
+        ], [
             'title.required' => 'タイトルは必須です。',
             'review.required' => 'レビュー内容は必須です。',
-        ]
-        );
+        ]);
 
         $review = new Review();
         $review->cafe_id = $cafe_id;
