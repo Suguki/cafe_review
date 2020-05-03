@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cafe;
 use App\Models\CafeImages;
+use App\Models\Review;
 
 class CafeController extends Controller
 {
@@ -28,6 +29,7 @@ class CafeController extends Controller
     public function show($id)
     {
         $cafe = Cafe::find($id);
+        $reviews = Review::all();
 
         if ($cafe === null) {
             // 渡された$idでカフェを取得できなかったときは、カフェが存在しないことをページに表示して、ユーザーにお知らせする。
@@ -39,6 +41,7 @@ class CafeController extends Controller
         // 渡された$idでカフェを取得することができた場合、詳細ページを表示する。これは表示系なので、bladeへ変数を渡す。
         return view('cafe/show', [
             'cafe' => $cafe,
+            'reviews' => $reviews,
         ]);
     }
 
