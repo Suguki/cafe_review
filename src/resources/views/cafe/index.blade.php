@@ -23,13 +23,18 @@
         <a href="{{ route('cafe.show', ['id' => $cafe->id]) }}">
             {{ $cafe->name }}
         </a>
-        {{dd($cafe)}}
-        <img href="{{ asset('storage/images/' . $cafe->images) }}">
         <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}" class="float-right">
             編集
         </a>
     </div>
     <div class="card-body">
+
+    @foreach($cafe->images as $number => $image)
+        @if($number === 0)
+            <img src="{{ asset($image->file_name) }}" >
+        @endif
+    @endforeach
+
         <p>{{ $cafe->name }}</p>
         <p>{{ $cafe->place }}</p>
         @foreach($cafe->reviews as $review)

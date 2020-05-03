@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cafe;
 use App\Models\CafeImages;
 use App\Models\Review;
+use Illuminate\Support\Facades\Storage;
 
 class CafeController extends Controller
 {
@@ -87,7 +88,7 @@ class CafeController extends Controller
             $path = $request->file('imageFile')->store('public/images'); //2,3,4
             $cafe_images = new CafeImages();
             $cafe_images->cafe_id = $id;
-            $cafe_images->file_name = $path; //5
+            $cafe_images->file_name = Storage::url($path); //5
             $cafe_images->save();
             return redirect(route('cafe.edit', ['id' => $id]))->with('success', '保存しました。');
         } else {
