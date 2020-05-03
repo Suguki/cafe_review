@@ -30,7 +30,7 @@
     <div class="card-body">
         <p>{{ $cafe->name }}</p>
         <p>{{ $cafe->place }}</p>
-        @foreach($review as $review)
+        @foreach($cafe->reviews as $review)
             <p>料理</p>
             @for($i = 1; $i <= $review->food_evaluation; $i++)
               ★
