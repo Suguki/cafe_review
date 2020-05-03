@@ -36,10 +36,19 @@
         <div class="row">
             <div class="col">
                 <h4>レビュー一覧</h4>
-                @foreach($reviews as $index => $review)
-                <p>{{ $review->title }}</p>
-                <p>{{ $review->review }}</p>
-                <p>{{ $review->created_at }}</p>
+                @foreach($cafe->reviews as $index => $review)
+                    <p>料理</p>
+                    @for($i = 1; $i <= $review->food_evaluation; $i++)
+                        ★
+                    @endfor
+                    <p>アクセス</p>
+                    @for($i = 1; $i <= $review->access_evaluation; $i++)
+                        ★
+                    @endfor
+                    <p>雰囲気</p>
+                    @for($i = 1; $i <= $review->feeling_evaluation; $i++)
+                        ★
+                    @endfor
                 @endforeach
             </div>
         </div>
