@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class CafeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index(Request $request)
     {
         $evaluation = $request->get('evaluation');

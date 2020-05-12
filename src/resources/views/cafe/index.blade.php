@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+@auth
 <a href="{{ route('cafe.create' )}}" class="btn btn-primary">カフェを登録</a>
+@endauth
 
 <form action="{{ route('cafe.index') }}" method="get">
     <select name="evaluation">
@@ -31,9 +32,11 @@
                         <a href="{{ route('cafe.show', ['id' => $cafe->id]) }}">
                             <h5 class="mt-0 mb-1">{{ $cafe->name }}</h5>
                         </a>
+                        @auth
                         <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}" class="float-right">
                             編集
                         </a>
+                        @endauth
                         <p>{{ $cafe->place }}</p>
                         <div class="row">
                             <div class="col-4">
