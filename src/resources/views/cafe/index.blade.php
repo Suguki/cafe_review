@@ -17,46 +17,50 @@
     <input type="submit" value="並べ替え" class="btn btn-warning">
 </form>
 
-@forelse($cafes as $index => $cafe)
-<div class="card">
-    <div class="card-header">
-        <a href="{{ route('cafe.show', ['id' => $cafe->id]) }}">
-            {{ $cafe->name }}
-        </a>
-        <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}" class="float-right">
-            編集
-        </a>
-    </div>
-    <div class="card-body">
-
-    @foreach($cafe->images as $number => $image)
-        @if($number === 0)
-            <img src="{{ asset($image->file_name) }}" >
-        @endif
-    @endforeach
-
-        <p>{{ $cafe->name }}</p>
-        <p>{{ $cafe->place }}</p>
-        @foreach($cafe->reviews as $review)
-            <p>料理</p>
-            @for($i = 1; $i <= $review->food_evaluation; $i++)
-              ★
-            @endfor
-            <p>アクセス</p>
-            @for($i = 1; $i <= $review->access_evaluation; $i++)
-              ★
-            @endfor
-            <p>雰囲気</p>
-            @for($i = 1; $i <= $review->feeling_evaluation; $i++)
-              ★
-            @endfor
-        @endforeach
-        <p>{{ $cafe->created_at }}</p>
-        <p>{{ $cafe->updated_at }}</p>
-    </div>
-</div>
-@empty
-<p>カフェはありません。</p>
-@endforelse
+    @forelse($cafes as $index => $cafe)
+        <div class="card">
+            <div class="card-body">
+                <li class="media">
+                    <!-- カフェの画像を差し込む -->
+                    @foreach($cafe->images as $number => $image)
+                        @if ($number === 0)
+                            <img class="mr-3" src="{{ asset($image->file_name) }}" alt="カフェのメイン画像" height="100">
+                        @endif
+                    @endforeach
+                    <div class="media-body">
+                        <a href="{{ route('cafe.show', ['id' => $cafe->id]) }}">
+                            <h5 class="mt-0 mb-1">{{ $cafe->name }}</h5>
+                        </a>
+                        <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}" class="float-right">
+                            編集
+                        </a>
+                        <p>{{ $cafe->place }}</p>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>料理</p>
+                                @for($i = 1; $i <= $cafe->food_evaluation; $i++)
+                                    ★
+                                @endfor
+                            </div>
+                            <div class="col-4">
+                                <p>アクセス</p>
+                                @for($i = 1; $i <= $cafe->access_evaluation; $i++)
+                                    ★
+                                @endfor
+                            </div>
+                            <div class="col-4">
+                                <p>雰囲気</p>
+                                @for($i = 1; $i <= $cafe->feeling_evaluation; $i++)
+                                    ★
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    @empty
+        <p>カフェはありません。</p>
+    @endforelse
 
 @endsection

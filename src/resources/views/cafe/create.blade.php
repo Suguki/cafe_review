@@ -5,10 +5,14 @@
 
 <form action="{{route('cafe.store')}}" method="post">
     @csrf
-    <p>カフェ</p>
-    <input type="text" name="name">
+    <div class="form-group">
+    <label>
+        カフェ
+        <input type="text" name="name" class="form-control">
+    </label>
+    </div>
     <p>場所</p>
-    <input type="text" name="place">
+    <input type="text" name="place" class="form-control">
     <input type="submit">
 </form>
 
