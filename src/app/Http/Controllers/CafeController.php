@@ -29,8 +29,7 @@ class CafeController extends Controller
 
     public function show($id)
     {
-        $cafe = Cafe::with(['images', 'reviews'])->find($id);
-
+        $cafe = Cafe::with(['images', 'reviews.user'])->find($id);
         if ($cafe === null) {
             // 渡された$idでカフェを取得できなかったときは、カフェが存在しないことをページに表示して、ユーザーにお知らせする。
             return view('cafe/error', [
