@@ -25,7 +25,7 @@
                     <!-- カフェの画像を差し込む -->
                     @foreach($cafe->images as $number => $image)
                         @if ($number === 0)
-                            <img class="mr-3" src="{{ asset($image->file_name) }}" alt="カフェのメイン画像" height="100">
+                            <img class="mr-3" src="{{ asset($image->file_name) }}" alt="カフェのメイン画像" width="150" height="100">
                         @endif
                     @endforeach
                     <div class="media-body">

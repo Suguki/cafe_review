@@ -1,8 +1,7 @@
-.contents {
-    width:700px;
-    margin-right: auto;
-    margin-left : auto;
-    background-image: url(../../resources/images/cafe.jpg);
+
+body {
+    background: url('/storage/images/coffee.jpeg');
+    background-size: cover;
 }
 
 input.textForm {
@@ -39,3 +38,23 @@ input.textForm {
     color: #ffcc00;
   }
 
+  .btn-right-radius {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: rgb(212, 138, 0);
+    background: #ECECEC;
+    border-radius: 0 15px 15px 0;
+    transition: .4s;
+  }
+
+  .btn-right-radius:hover {
+    background: #636363;
+  }
+
+  #map {
+    width: 700px;
+    height: 400px;
+}
