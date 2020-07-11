@@ -78,4 +78,5 @@
         </main>
     </div>
 </body>
+<script src="{{ asset('../js/sub.js') }}"></script>
 </html>
