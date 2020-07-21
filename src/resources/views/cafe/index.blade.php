@@ -1,25 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-@auth
-<a href="{{ route('cafe.create' )}}" class="btn btn-primary">カフェを登録</a>
-@endauth
 
 <form action="{{ route('cafe.index') }}" method="get">
-    <select name="evaluation">
-        <option value="food_evaluation">料理</option>
-        <option value="access_evaluation">アクセス</option>
-        <option value="feeling_evaluation"> 雰囲気</option>
-    </select>
-    <select name="sortBy">
-        <option value="asc">低い順</option>
-        <option value="desc">高い順</option>
-    </select>
-    <input type="submit" value="並べ替え" class="btn btn-warning">
+    <div class="row">
+        <div class="col-8">
+            <select name="evaluation">
+                <option value="food_evaluation">料理</option>
+                <option value="access_evaluation">アクセス</option>
+                <option value="feeling_evaluation"> 雰囲気</option>
+            </select>
+            <select name="sortBy">
+                <option value="asc">低い順</option>
+                <option value="desc">高い順</option>
+            </select>
+            <input type="submit" value="並べ替え" class="btn btn-dark btn-sm">
+        </div>
+        <div class="col-4 text-right">
+            @auth
+                <a href="{{ route('cafe.create' )}}" class="btn btn-primary">カフェを登録</a>
+            @endauth
+        </div>
+    </div>
 </form>
 
     @forelse($cafes as $index => $cafe)
-        <div class="card">
+        <div class="card transparent mt-2">
             <div class="card-body">
                 <li class="media">
                     <!-- カフェの画像を差し込む -->

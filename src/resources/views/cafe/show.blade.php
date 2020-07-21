@@ -3,10 +3,12 @@
 
 @section('content')
 @auth
-<a href="{{ route('review.create', ['cafe_id' => $cafe->id]) }}">レビュー投稿</a>
+<div class="text-right">
+    <a href="{{ route('review.create', ['cafe_id' => $cafe->id]) }}" class="btn btn-dark">レビュー投稿</a>
+</div>
 @endauth
 
-<div class="card">
+<div class="card transparent">
     <div class="card-header">
         {{ $cafe->name }}
     </div>
@@ -45,7 +47,7 @@
             <div class="col">
                 <h4>レビュー一覧</h4>
                 @foreach($cafe->reviews as $index => $review)
-                    <div class="card">
+                    <div class="card transparent">
                         <div class="card-header">
                             {{ $review->user->name }}
                             <span class="float-right">{{ $review->created_at }}</span>
