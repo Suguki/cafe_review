@@ -25,15 +25,15 @@
                     <!-- カフェの画像を差し込む -->
                     @foreach($cafe->images as $number => $image)
                         @if ($number === 0)
-                            <img class="mr-3" src="{{ asset($image->file_name) }}" alt="カフェのメイン画像" width="150" height="100">
+                            <img class="mr-3" src="{{ asset($image->file_name) }}" alt="カフェのメイン画像" width="150" height="120">
                         @endif
                     @endforeach
                     <div class="media-body">
-                        <a href="{{ route('cafe.show', ['id' => $cafe->id]) }}">
-                            <h5 class="mt-0 mb-1">{{ $cafe->name }}</h5>
+                        <a href="{{ route('cafe.show', ['id' => $cafe->id]) }}" class="card-title">
+                            <h5 class="mt-0 mb-1" style="text-decoration: underline">{{ $cafe->name }}</h5>
                         </a>
                         @auth
-                        <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}" class="float-right">
+                        <a href="{{ route('cafe.edit', ['id' => $cafe->id]) }}" class="float-right　card-title">
                             編集
                         </a>
                         @endauth

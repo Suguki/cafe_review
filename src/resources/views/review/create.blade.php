@@ -12,13 +12,15 @@
     </div>
 @endif
 
-<form action="{{route('review.store', ['cafe_id' => $cafe_id])}}" method="post">
+<form action="{{route('review.store', ['cafe_id' => $cafe_id])}}" method="post" class="form-wrapper">
     @csrf
-    <p>レビュータイトル</p>
-    <input type="text" name="title">
-    <p>レビュー</p>
-    <textarea name="review"></textarea>
-    <p>料理</p>
+    <div class="text">
+        <p>レビュータイトル</p>
+        <input type="text" name="title">
+        <p>レビュー</p>
+        <textarea name="review"></textarea>
+        <p>料理</p>
+    </div>
     <div class="evaluation">
         <input id="star1" type="radio" name="food_evaluation" value="5" />
         <label for="star1"><span class="text">最高</span>★</label>
@@ -31,7 +33,7 @@
         <input id="star5" type="radio" name="food_evaluation" value="1" />
         <label for="star5"><span class="text">悪い</span>★</label>
     </div>
-    <p>アクセス</p>
+    <p class="text"> アクセス</p>
     <div class="evaluation">
         <input id="star6" type="radio" name="access_evaluation" value="5" />
         <label for="star6"><span class="text">最高</span>★</label>
@@ -44,7 +46,7 @@
         <input id="star10" type="radio" name="access_evaluation" value="1" />
         <label for="star10"><span class="text">悪い</span>★</label>
     </div>
-    <p>雰囲気</p>
+    <p class="text"> 雰囲気</p>
     <div class="evaluation">
         <input id="star11" type="radio" name="feeling_evaluation" value="5" />
         <label for="star11"><span class="text">最高</span>★</label>

@@ -56,7 +56,7 @@ class CafeController extends Controller
     {
         $cafe = Cafe::find($id);
         return view('cafe/edit', [
-            'cafe' => $cafe,
+            'cafe' => $cafe
         ]);
     }
 
