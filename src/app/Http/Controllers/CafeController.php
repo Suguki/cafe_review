@@ -12,13 +12,20 @@ class CafeController extends Controller
 {
     public function index(Request $request)
     {
+        $searchedCafe = $request->get('searchedCafe');
+
         $evaluation = $request->get('evaluation');
-        $cafes = Cafe::with(['images', 'reviews'])->get();
+        $cafes = Cafe::with(['images', 'reviews']);
+        if(strlen($searchedCafe) > 0) {
+            $cafes = $cafes->where('name', $searchedCafe);
+        }
+        $cafes = $cafes->get();
         if ($request->get('sortBy') == 'asc') {
             $cafes = $cafes->sortBy($evaluation);
         } elseif ($request->get('sortBy') == 'desc') {
             $cafes = $cafes->sortByDesc($evaluation);
         }
+
         return view('cafe/index', ['cafes' => $cafes]);
     }
 
@@ -26,15 +33,13 @@ class CafeController extends Controller
     {
         $cafe = Cafe::with(['images', 'reviews.user'])->find($id);
         if ($cafe === null) {
-            // 渡された$idでカフェを取得できなかったときは、カフェが存在しないことをページに表示して、ユーザーにお知らせする。
             return view('cafe/error', [
                 'errorMessage' => 'このカフェは存在しません。'
             ]);
         }
-
-        // 渡された$idでカフェを取得することができた場合、詳細ページを表示する。これは表示系なので、bladeへ変数を渡す。
         return view('cafe/show', [
             'cafe' => $cafe,
+
         ]);
     }
 
