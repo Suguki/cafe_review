@@ -21,6 +21,13 @@
                 <a href="{{ route('cafe.create' )}}" class="btn btn-primary">カフェを登録</a>
             @endauth
         </div>
+        <div class="">
+            <form action="{{ route('cafe.index') }}" method="get">
+                <p>カフェ名を検索</p>
+                <input type="text"　name="searchedCafe" ></input>
+                <input type="submit" >
+            </form>
+        </div>
     </div>
 </form>
 
