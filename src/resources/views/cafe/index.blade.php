@@ -5,6 +5,11 @@
 <form action="{{ route('cafe.index') }}" method="get">
     <div class="row">
         <div class="col-8">
+            <form action="{{ route('cafe.index') }}" method="get">
+                <input type="text"　name="searchedCafe" ></input>
+                <input type="submit" value="カフェを検索">
+            </form>s
+            <div>
             <select name="evaluation">
                 <option value="food_evaluation">料理</option>
                 <option value="access_evaluation">アクセス</option>
@@ -15,20 +20,15 @@
                 <option value="desc">高い順</option>
             </select>
             <input type="submit" value="並べ替え" class="btn btn-dark btn-sm">
+            </div>
         </div>
         <div class="col-4 text-right">
             @auth
-                <a href="{{ route('cafe.create' )}}" class="btn btn-primary">カフェを登録</a>
+                <a href="{{ route('cafe.create' )}}" class="btn btn-dark">カフェを登録</a>
             @endauth
         </div>
-        <div class="">
-            <form action="{{ route('cafe.index') }}" method="get">
-                <p>カフェ名を検索</p>
-                <input type="text"　name="searchedCafe" ></input>
-                <input type="submit" >
-            </form>
-        </div>
     </div>
+
 </form>
 
     @forelse($cafes as $index => $cafe)
