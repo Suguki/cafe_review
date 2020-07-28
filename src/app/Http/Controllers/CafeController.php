@@ -17,7 +17,7 @@ class CafeController extends Controller
         $evaluation = $request->get('evaluation');
         $cafes = Cafe::with(['images', 'reviews']);
         if(strlen($searchedCafe) > 0) {
-            $cafes = $cafes->where('name', $searchedCafe);
+            $cafes = $cafes->where('name', 'LIKE', "%{$searchedCafe}%");
         }
         $cafes = $cafes->get();
         if ($request->get('sortBy') == 'asc') {
