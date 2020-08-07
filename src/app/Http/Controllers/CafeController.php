@@ -50,11 +50,18 @@ class CafeController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'place' => 'required',
+        ], [
+            'name.required' => 'タイトルは必須です。',
+            'place.required' => 'レビュー内容は必須です。',
+        ]);
         $cafe = new Cafe();
         $cafe->name = $request->get('name');
         $cafe->place = $request->get('place');
         $cafe->save();
-        return redirect(route('cafe.index'));
+        return redirect(route('cafe.create'))->with('flash_message', '投稿が完了しました');
     }
 
     public function edit($id)
