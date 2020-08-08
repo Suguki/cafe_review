@@ -4,6 +4,7 @@
 @section('content')
 @auth
 <div class="text-right">
+    <a href="{{ route('cafe.index')}}" class="btn btn-dark">一覧へ戻る</a>
     <a href="{{ route('review.create', ['cafe_id' => $cafe->id]) }}" class="btn btn-dark">レビュー投稿</a>
 </div>
 @endauth
@@ -72,15 +73,11 @@
                                 ★
                           @endfor
                           </p>
+                          <h5 class="border-bottom">{{ $review->title }}</h5>
                           <p class="card-text">{{ $review->review }}</p>
-
-
                         </div>
                     </div>
                 @endforeach
-
-
-
             </div>
         </div>
     </div>

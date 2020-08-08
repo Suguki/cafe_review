@@ -7,24 +7,24 @@
         <div class="col-8">
             <form action="{{ route('cafe.index') }}" method="get">
                 <input type="text"　name="searchedCafe" ></input>
-                <input type="submit" value="カフェを検索">
-            </form>s
+                <input type="submit" value="カフェを検索"　class="btn btn-dark">
+            </form>
             <div>
-            <select name="evaluation">
-                <option value="food_evaluation">料理</option>
-                <option value="access_evaluation">アクセス</option>
-                <option value="feeling_evaluation"> 雰囲気</option>
-            </select>
-            <select name="sortBy">
-                <option value="asc">低い順</option>
-                <option value="desc">高い順</option>
-            </select>
-            <input type="submit" value="並べ替え" class="btn btn-dark btn-sm">
+                <select name="evaluation">
+                    <option value="food_evaluation">料理</option>
+                    <option value="access_evaluation">アクセス</option>
+                    <option value="feeling_evaluation"> 雰囲気</option>
+                </select>
+                <select name="sortBy">
+                    <option value="asc">低い順</option>
+                    <option value="desc">高い順</option>
+                </select>
+                <input type="submit" value="並べ替え" class="btn btn-dark btn-sm">
             </div>
         </div>
         <div class="col-4 text-right">
             @auth
-                <a href="{{ route('cafe.create' )}}" class="btn btn-dark">カフェを登録</a>
+                <a href="{{ route('cafe.create')}}" class="btn btn-dark">カフェを登録</a>
             @endauth
         </div>
     </div>
@@ -35,7 +35,6 @@
         <div class="card transparent mt-2">
             <div class="card-body">
                 <li class="media">
-                    <!-- カフェの画像を差し込む -->
                     @foreach($cafe->images as $number => $image)
                         @if ($number === 0)
                             <img class="mr-3" src="{{ asset($image->file_name) }}" alt="カフェのメイン画像" width="150" height="120">
@@ -76,7 +75,9 @@
             </div>
         </div>
     @empty
+    <div class="alert alert-danger">
         <p>カフェはありません。</p>
+    </div>
     @endforelse
 
 @endsection

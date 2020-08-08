@@ -19,7 +19,7 @@
             <p>レビュータイトル</p>
             <input type="text" name="title">
             <p>レビュー</p>
-            <textarea name="review"></textarea>
+            <textarea rows="10" cols="60"　name="review"></textarea>
             <p>料理</p>
         </div>
         <div class="evaluation">
@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="card-footer text-right">
-        <input type="submit" class="btn btn-primary">
+        <input type="submit" class="btn btn-dark">
     </div>
 </form>
 
