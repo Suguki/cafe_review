@@ -77,6 +77,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/map.js') }}"></script>
 </body>
 <script src="{{ asset('../js/sub.js') }}"></script>
 </html>

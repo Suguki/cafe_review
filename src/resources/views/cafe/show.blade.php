@@ -13,8 +13,7 @@
             <div class="col">
                 <h4>カフェの場所</h4>
                 <p>{{ $cafe->place }}</p>
-                <div id="map">
-                </div>
+                <div id="map"></div>
             </div>
         </div>
         <div class="row">
